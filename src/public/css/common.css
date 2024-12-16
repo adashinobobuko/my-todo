@@ -1,0 +1,35 @@
+nav {
+    background-color: rgb(30, 30, 30);
+}
+
+ul {
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+}
+
+li:not(.list1) {
+    margin-left: 20px;
+}
+
+li a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.header-logo{
+    text-align: center;
+    font-size: 80px;
+}
+
+.header-logo a{
+    color: rgb(30,30,30);
+    text-decoration: none;
+}
+
+nav,.header-logo{
+    font-family: "Pixelify Sans", sans-serif;
+}

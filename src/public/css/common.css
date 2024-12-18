@@ -33,3 +33,9 @@ li a{
 nav,.header-logo{
     font-family: "Pixelify Sans", sans-serif;
 }
+
+/* デフォルトのフォント設定 */
+body {
+    font-family: 'DotGothic16', sans-serif;
+    /* 日本語用フォント */
+}

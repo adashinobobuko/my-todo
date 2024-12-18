@@ -22,7 +22,8 @@
             <li>
               <a href="">logout</a>
             </li>
-        </ul>   
+        </ul>
+           
     </nav>
     <header class="header">
     <div class="header-logo">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,11 @@ Route::post('/todos', [TodoController::class, 'store']);
 Route::get('/my',[TodoController::class,'myindex']);
 Route::delete('/todos/delete', [TodoController::class, 'destroy']);
 Route::get('/login',[TodoController::class,'login']);
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/my', function () {
+    return 'Welcome to your MyPage!';
+})->middleware('auth');

@@ -42,9 +42,9 @@
       @else
         <tr class="todo-table__row">
           <th class="todo-table__header">Todo</th>
-          <th class="todo-table__header">追加日時</th>
-          <th class="todo-table__header">完了期日</th>
-          <th class="todo-table__header">アクション</th>
+          <th class="todo-table__header">Add</th>
+          <th class="todo-table__header">Complete</th>
+          <th class="todo-table__header">Action</th>
         </tr>
         @foreach($todos as $todo)
         <tr class="todo-table__row">

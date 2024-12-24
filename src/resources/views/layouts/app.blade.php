@@ -17,10 +17,15 @@
     <nav>
         <ul>
             <li>
-              <a href="/my" action="/myindex">mypage</a>
+              <a href="/my" action="/myindex">login</a>
             </li>
             <li>
-              <a href="">logout</a>
+              <a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                logout
+              </a>
+            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+              @csrf
+            </form>
             </li>
         </ul>
            

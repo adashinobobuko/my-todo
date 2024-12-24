@@ -9,7 +9,15 @@ class Todo extends Model
 {
     use HasFactory;
 
-    //許可リストに追加
-    protected $fillable = ['content', 'due_date'];
+    protected $fillable = [
+        'content',
+        'due_date',
+        'user_id',
+    ];
 
+    // ユーザーとのリレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

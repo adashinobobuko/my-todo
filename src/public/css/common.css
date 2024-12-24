@@ -20,6 +20,16 @@ li a{
     text-decoration: none;
 }
 
+.header-nav__button{
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #ff0000;
+    color: #fff;
+    cursor: pointer;
+}
+
 .header-logo{
     text-align: center;
     font-size: 80px;
@@ -30,12 +40,19 @@ li a{
     text-decoration: none;
 }
 
-nav,.header-logo{
-    font-family: "Pixelify Sans", sans-serif;
-}
-
-/* デフォルトのフォント設定 */
 body {
     font-family: 'DotGothic16', sans-serif;
-    /* 日本語用フォント */
+}
+
+body *:not(.header-logo) {
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.header-logo {
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+nav,
+nav * {
+    font-family: 'Pixelify Sans', sans-serif;
 }

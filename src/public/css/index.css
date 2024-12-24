@@ -145,3 +145,42 @@ body,
 body *:lang(ja) {
     font-family: 'DotGothic16', sans-serif;
 }
+
+/* Sign up ボタン用のスタイル */
+.sign-up {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.sign-up a {
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    background-color: #2850a7 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.sign-up a:hover {
+    background-color: #213988;
+    /* 少し濃いグリーン */
+    transform: translateY(-2px);
+    /* ホバー時のアニメーション */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sign up リンクのモバイル対応 */
+@media (max-width: 768px) {
+    .sign-up a {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+.sign-up a {
+    font-family: inherit;
+}

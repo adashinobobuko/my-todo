@@ -66,6 +66,9 @@
         @endforeach
       @endif
     </table>
+    <div class="sign-up">
+      <a href="/register">Sign up</a>
+    </div>
   </div>
 </div>
 @endsection

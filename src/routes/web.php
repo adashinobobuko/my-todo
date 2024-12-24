@@ -15,16 +15,16 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+// 認証不要なルート
 Route::get('/', [TodoController::class, 'index']);
-Route::post('/todos', [TodoController::class, 'store']);
-Route::get('/my',[TodoController::class,'myindex']);
-Route::delete('/todos/delete', [TodoController::class, 'destroy']);
-Route::get('/login',[TodoController::class,'login']);
-
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/my', function () {
-    return 'Welcome to your MyPage!';
-})->middleware('auth');
+// 認証が必要なルート（authミドルウェア適用）
+Route::middleware('auth')->group(function () {
+    Route::post('/todos', [TodoController::class, 'store']);
+    Route::delete('/todos/delete', [TodoController::class, 'destroy']);
+    Route::get('/my', [TodoController::class, 'myindex']);
+});
+

@@ -1,0 +1,119 @@
+/* 全体リセットと基本スタイル */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    /* 優しいブルー系の背景色 */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 全体の中央揃え */
+.register__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* 登録フォームのスタイル */
+form {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* フォームの見出し */
+.register-form__heading h2 {
+    font-size: 1.8rem;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* グループ全体のスタイル */
+.form__group {
+    margin-bottom: 20px;
+}
+
+/* ラベルのスタイル */
+.form__label--item {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* テキスト入力欄のスタイル */
+.form__input--text input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form__input--text input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* エラーメッセージのスタイル */
+.form__error {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* ボタンのスタイル */
+.form__button-submit {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form__button-submit:hover {
+    background-color: #0056b3;
+}
+
+/* ログインリンクのスタイル */
+.login__link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login__button-submit {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.login__button-submit:hover {
+    text-decoration: underline;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+
+    .register-form__heading h2 {
+        font-size: 1.5rem;
+    }
+}

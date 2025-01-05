@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::post('/todos', [TodoController::class, 'store']);
     Route::delete('/todos/delete', [TodoController::class, 'destroy']);
-    Route::get('/my', [TodoController::class, 'myindex']);
+    Route::get('/my', [TodoController::class, 'mypage']);
+    Route::get('/todos/search',[TodoController::class,'search']);
+    //カテゴリー関連（ログインしていないと追加できない）
+    Route::get('/categories',[CategoryController::class,'index']);
+    Route::post('/categories', [CategoryController::class, 'store']);
 });
 
+//Category関連
+//Route::get('/categories',[CategoryController::class,'index']);
+//Route::post('/categories', [CategoryController::class, 'store']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
@@ -22,33 +23,37 @@ class TodoController extends Controller
 
     public function index()
     {
-        $todos = Todo::all();
-        return view('index', compact('todos'));
+        //$todos = Todo::all();
+        //カテゴリーとのリレーション
+        $todos = Todo::with('category')->get();
+        $categories = Category::all();
+        return view('index', compact('todos','categories'));
     }
 
-    public function myindex()
+    public function mypage()
     {
         // ログインユーザーが作成したTodoのみ取得
         $todos = Todo::where('user_id', Auth::id())->get();
-        return view('myindex', compact('todos'));
+        $categories = Category::all();
+        return view('myindex', compact('todos','categories'));
     }
 
     public function store(Request $request)
     {
-        // バリデーション
         $validated = $request->validate([
             'content' => 'required|string|max:255',
-            'due_date' => 'nullable|date',
+            'due_date' => 'required|date',
+            'category_id' => 'required|exists:categories,id',//カテゴリーIDを追加
         ]);
 
-        // ログインユーザーIDをTodoに紐付けて保存
         Todo::create([
-            'content' => $validated['content'],
-            'due_date' => $validated['due_date'],
-            'user_id' => Auth::id(), // ログインユーザーのIDを保存
+            'content' => $request->content,
+            'due_date' => $request->due_date,
+            'user_id' => Auth::id(), // ログイン中のユーザーIDを保存
+            'category_id' => $validated['category_id'],//カテゴリーIDを追加
         ]);
 
-        return redirect('/')->with('message', 'Todoが作成されました！');
+        return redirect('/my')->with('message', 'Todoを作成しました！');
     }
 
     public function destroy(Request $request)
@@ -62,6 +67,19 @@ class TodoController extends Controller
         }
 
         $todo->delete();
-        return redirect('/')->with('message', 'Todoを完了しました！');
+        return redirect('/my')->with('message', 'Todoを完了しました！');
+    }
+
+    public function search(Request $request)
+    {
+        // カテゴリIDで検索
+        $todos = Todo::with('category')
+            ->CategorySearch($request->category_id)
+            ->where('user_id', Auth::id()) // ログインユーザーのTodoのみ表示
+            ->get();
+
+        $categories = Category::all();
+
+        return view('myindex', compact('todos', 'categories'));
     }
 }

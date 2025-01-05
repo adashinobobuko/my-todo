@@ -17,7 +17,7 @@
     <nav>
         <ul>
             <li>
-              <a href="/my" action="/myindex">login</a>
+              <a href="/my" action="/mypage">login</a>
             </li>
             <li>
               <a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

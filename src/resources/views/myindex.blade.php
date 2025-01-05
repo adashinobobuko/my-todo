@@ -23,6 +23,9 @@
 </div>
 
 <div class="todo__content">
+  <div class="category__link">
+    <a href="/categories">Category</a>
+  </div>
   <form class="create-form" action="/todos" method="post">
     @csrf
     <div class="create-form__item">
@@ -31,8 +34,28 @@
     <div class="create-form__item">
       <input class="create-form__item-input" type="date" name="due_date" placeholder="完了期日を入力">
     </div>
+    <div class="create-form__item">
+      <select class="create-form__item-select" name="category_id">
+        @foreach($categories as $category)
+          <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+        @endforeach
+      </select>
+    </div>
     <div class="create-form__button">
       <button class="create-form__button-submit" type="submit">作成</button>
+    </div>
+  </form>
+  <form class="search-form" action="/todos/search" method="get">
+    @csrf
+    <div class="search-form__item">
+      <select class="create-form__item-select" name="category_id">
+        @foreach($categories as $category)
+          <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+        @endforeach
+      </select>
+       <div class="search-form__button">
+        <button class="search-form__button-submit" type="submit">検索</button>
+       </div>
     </div>
   </form>
   <div class="todo-table">
@@ -54,6 +77,7 @@
                 <tr class="todo-table__row">
                 <td class="todo-table__item">{{ $todo->content }}</td>
                 <td class="todo-table__item">{{ $todo->created_at->format('Y-m-d H:i') }}</td>
+                <td>({{ $todo->user->name }}) {{-- ユーザー名を表示 --}}</td>
                 <td class="todo-table__item">{{ $todo->due_date }}</td>
                 <td class="todo-table__item">
               </div>
